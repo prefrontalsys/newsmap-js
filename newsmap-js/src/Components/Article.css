@@ -4,7 +4,6 @@
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.3);
   animation: fade-in 2s ease-in;
-  position: relative;
 }
 
 .Article-li:focus-within {
