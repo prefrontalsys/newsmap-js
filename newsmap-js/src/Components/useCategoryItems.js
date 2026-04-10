@@ -17,7 +17,7 @@ import { isSearchMatching } from '../isSearchMatching.js';
  * @param {number} itemsPerCategory
  * @param {"time"|"sourceCount"|"sources"|"position"} weightMode
  */
-export function useCategoryItems(categories, refreshTime, itemsPerCategory, weightMode = "time") {
+export function useCategoryItems(categories, refreshTime, itemsPerCategory, weightMode = "time", dismissed = new Set()) {
 
     const [categoryData, setCategoryData] = useState(/** @type {{ [id: string]: Category }} */({}));
     const loaderRef = useRef(/** @type {((cancellable: { current: boolean; }) => void)?} */(null));
@@ -159,9 +159,10 @@ export function useCategoryItems(categories, refreshTime, itemsPerCategory, weig
             articles = articles.filter(item => isSearchMatching(searchValue, item));
         }
 
-        // Remove articles already claimed by a prior category
+        // Remove dismissed and duplicate articles
         articles = articles.filter(a => {
             const normalizedTitle = a.title.toLowerCase().trim();
+            if (dismissed.has(normalizedTitle)) return false;
             if (seenUrls.has(a.url) || seenTitles.has(normalizedTitle)) return false;
             seenUrls.add(a.url);
             seenTitles.add(normalizedTitle);

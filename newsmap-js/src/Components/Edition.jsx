@@ -5,6 +5,7 @@ import TreeMapMixed from './TreeMapMixed.jsx';
 import Article from './Article.jsx';
 
 import { useCategoryItems } from './useCategoryItems.js';
+import { useDismissedArticles } from './useDismissedArticles.js';
 
 
 /**
@@ -62,7 +63,8 @@ function Edition({
   refreshTime,
   onArticleClick,
 }) {
-  let items = useCategoryItems(categories, refreshTime, itemsPerCategory, weightingMode);
+  const { dismissed, dismiss, clearDismissed } = useDismissedArticles();
+  let items = useCategoryItems(categories, refreshTime, itemsPerCategory, weightingMode, dismissed);
 
   // Fast visual update
   // (Article sizes update every 60 seconds, doesn't refetch)
@@ -88,6 +90,7 @@ function Edition({
           colours={colours}
           newTab={newTab}
           onClick={e => onArticleClick(props.item, e)}
+          onDismiss={dismiss}
           {...props}
         />
       )}

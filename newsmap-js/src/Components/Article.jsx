@@ -28,6 +28,7 @@ export default function Article({
   colours = defaultColours,
   style,
   onClick,
+  onDismiss,
   newTab
 }) {
   const elementRef = useRef(/** @type {HTMLAnchorElement?} */(null));
@@ -131,6 +132,16 @@ export default function Article({
       >
         {source.title}
       </a>
+      {onDismiss && (
+        <button
+          className="Article-dismiss"
+          onClick={e => { e.stopPropagation(); onDismiss(item.title); }}
+          title="Dismiss article"
+          aria-label="Dismiss article"
+        >
+          &times;
+        </button>
+      )}
     </li>
   );
 }
