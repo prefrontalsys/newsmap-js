@@ -26,7 +26,12 @@ export async function getNewsByQuery(options) {
                     let title = titleEl ? decodeHtml(titleEl.textContent || titleEl.innerHTML) : "";
 
                     const linkEl = itemEl.getElementsByTagName("link")[0];
-                    const url = linkEl ? linkEl.textContent || linkEl.innerHTML : "";
+                    // In browser DOMParser (text/xml), <link> is treated as a void/self-closing
+                    // element, so the URL becomes a sibling text node rather than a child.
+                    // Fall back to nextSibling.nodeValue to handle that case.
+                    const url = (linkEl
+                        ? (linkEl.textContent || linkEl.innerHTML || (linkEl.nextSibling && linkEl.nextSibling.nodeValue && linkEl.nextSibling.nodeValue.trim()))
+                        : "") || "";
 
                     const idEl = itemEl.getElementsByTagName("guid")[0];
                     const id = idEl ? idEl.textContent || idEl.innerHTML : "";
