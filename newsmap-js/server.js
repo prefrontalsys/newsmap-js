@@ -59,14 +59,7 @@ app.use(
     userResHeaderDecorator(headers, userReq, userRes, proxyReq, proxyRes) {
       // receives an Object of headers, returns an Object of headers.
       if (userReq.headers["origin"]) {
-        const origin = userReq.headers["origin"];
-        if (
-          origin === "https://newsmap.ijmacd.com" ||
-          origin.startsWith("http://localhost:") ||
-          origin.startsWith("http://127.0.0.1:")
-        ) {
-          headers["access-control-allow-origin"] = origin;
-        }
+        headers["access-control-allow-origin"] = userReq.headers["origin"];
       }
       headers["cache-control"] = "max-age=300";
 

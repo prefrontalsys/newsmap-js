@@ -281,3 +281,46 @@ button:active {
 .SourcesModal-Source p {
   margin-top: 0;
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .App-header {
+    flex-direction: column;
+  }
+
+  .App-header-config-topline {
+    flex-wrap: wrap;
+  }
+
+  .App-category-chooser {
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  .App-category-key {
+    font-size: 0.7em;
+    padding: 2px 6px;
+  }
+
+  .App-modal {
+    width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .App-category-key {
+    font-size: 0.6em;
+    padding: 1px 4px;
+  }
+
+  .App-title {
+    font-size: 1em;
+  }
+
+  .App-header-controls button {
+    font-size: 0.7em;
+    padding: 2px 4px;
+  }
+}
