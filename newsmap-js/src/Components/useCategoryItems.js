@@ -145,12 +145,24 @@ export function useCategoryItems(categories, refreshTime, itemsPerCategory, weig
 
     const searchValue = useContext(SearchContext);
 
+    // Dedupe articles across categories — an article appears only in its
+    // first (highest-priority) category. Keyed by article URL since IDs
+    // from Google News search can differ for the same underlying story.
+    const seenUrls = new Set();
+
     let items = loadedCategories.map(c => {
         let articles = c.articles.map((a, i) => ({ ...a, weight: weight(a, i), category: c.id }));
 
         if (searchValue.mode === "filter") {
             articles = articles.filter(item => isSearchMatching(searchValue, item));
         }
+
+        // Remove articles already claimed by a prior category
+        articles = articles.filter(a => {
+            if (seenUrls.has(a.url)) return false;
+            seenUrls.add(a.url);
+            return true;
+        });
 
         articles.sort((a, b) => b.weight - a.weight);
 
