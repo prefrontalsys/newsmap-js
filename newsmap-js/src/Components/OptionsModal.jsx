@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ucfirst } from '../util.js';
 import * as palettes from '../colours.js';
-import editions from '../data/editions.json';
-
 /**
  *
  * @param {object} props
- * @param {string[]} props.selectedEditions
  * @param {"tree"|"tree_mixed"|"grid"} props.mode
  * @param {"time"|"source_count"|"sources"|"position"} props.weightingMode
  * @param {boolean} props.showGradient
@@ -16,13 +13,10 @@ import editions from '../data/editions.json';
  * @param {boolean} props.enableSourcesModal
  * @param {string} props.selectedPalette
  * @param {() => void} props.onClose
- * @param {(ed: string[]) => void} props.onEditionChange
  * @param {(state: any) => void} props.setSavedState
- * @param {string} [props.donationLink]
  * @returns
  */
 export function OptionsModal({
-  selectedEditions,
   mode,
   weightingMode,
   showGradient,
@@ -32,39 +26,13 @@ export function OptionsModal({
   enableSourcesModal,
   selectedPalette,
   onClose,
-  onEditionChange,
   setSavedState,
-  donationLink,
 }) {
-  /**
-   * @param {import('react').FormEvent<HTMLSelectElement>} e
-   */
-  function handleEditionChange(e) {
-    const { options } = e.currentTarget;
-
-    const selectedEditions = Array.from(options).filter(o => o.selected).map(o => o.value);
-
-    onEditionChange(selectedEditions);
-  }
-
   return (
     <div className="App-shade" onClick={onClose}>
       <div className="App-modal App-Options" onClick={e => e.stopPropagation()}>
         <h1>Options</h1>
         <div className="App-modalbody">
-          <div className="App-formgroup">
-            <label htmlFor="sel-editions">
-              Edition
-            </label>
-            <select
-              id="sel-editions"
-              multiple
-              onChange={handleEditionChange}
-              value={selectedEditions}
-            >
-              {editions.map(ed => <option key={ed.value} value={ed.value}>{ed.name}</option>)}
-            </select>
-          </div>
           <div className="App-formgroup">
             <label htmlFor="chk-top-header">
               Controls on Top
@@ -136,9 +104,6 @@ export function OptionsModal({
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "end" }}>
-          {
-            donationLink && <DonationLink link={donationLink} />
-          }
           <p style={{ textAlign: "right", marginBottom: 0 }}>
             <button onClick={onClose}>Dismiss</button>
           </p>
@@ -172,23 +137,3 @@ function PaletteSelect({ selectedPalette, setPalette }) {
   });
 }
 
-function DonationLink({ link }) {
-  const [showDonationLink, setShowDonationLink] = useState(false);
-
-  return (
-    <div style={{ flex: 1 }}>
-      {showDonationLink ?
-        <p style={{ fontSize: "0.8em" }}>
-          If you find NewsMap.JS useful, donations are very much appreciated to
-          help pay for associated hosting costs.{' '}
-          <a href={link} target="_blank" rel="noopener">{link}</a>.
-        </p> :
-        <p>
-          <button onClick={() => setShowDonationLink(true)} className="btn-link">
-            I want to help with hosting costs.
-          </button>
-        </p>
-      }
-    </div>
-  );
-}

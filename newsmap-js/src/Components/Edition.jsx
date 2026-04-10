@@ -39,7 +39,6 @@ import { useCategoryItems } from './useCategoryItems.js';
 
 /**
  * @param {object} props
- * @param {string} props.edition
  * @param {"tree"|"grid"|"tree_mixed"} props.mode
  * @param {"time"|"sourceCount"|"sources"|"position"} props.weightingMode
  * @param {string[]} props.categories
@@ -52,7 +51,6 @@ import { useCategoryItems } from './useCategoryItems.js';
  * @param {(article: Article, e: import('react').MouseEvent) => void} props.onArticleClick
  */
 function Edition({
-  edition,
   categories,
   mode,
   weightingMode,
@@ -64,7 +62,7 @@ function Edition({
   refreshTime,
   onArticleClick,
 }) {
-  let items = useCategoryItems(categories, refreshTime, edition, itemsPerCategory, weightingMode);
+  let items = useCategoryItems(categories, refreshTime, itemsPerCategory, weightingMode);
 
   // Fast visual update
   // (Article sizes update every 60 seconds, doesn't refetch)
