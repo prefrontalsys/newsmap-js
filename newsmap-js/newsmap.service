@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/ubuntu/newsmap-js
+WorkingDirectory=/home/ubuntu/newsmap-js/newsmap-js
 ExecStart=/usr/bin/node server.js
 Restart=on-failure
 RestartSec=5
