@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { getNews } from '../sources/GoogleNewsRSS.js';
+import { getNewsByQuery } from '../sources/GoogleNewsRSS.js';
+import topics from '../data/topics.json';
 import { ucfirst } from '../util.js';
 import { SearchContext } from '../SearchContext.js';
 import { isSearchMatching } from '../isSearchMatching.js';
@@ -16,7 +17,7 @@ import { isSearchMatching } from '../isSearchMatching.js';
  * @param {number} itemsPerCategory
  * @param {"time"|"sourceCount"|"sources"|"position"} weightMode
  */
-export function useCategoryItems(categories, refreshTime, edition, itemsPerCategory, weightMode = "time") {
+export function useCategoryItems(categories, refreshTime, itemsPerCategory, weightMode = "time") {
 
     const [categoryData, setCategoryData] = useState(/** @type {{ [id: string]: Category }} */({}));
     const loaderRef = useRef(/** @type {((cancellable: { current: boolean; }) => void)?} */(null));
@@ -47,18 +48,33 @@ export function useCategoryItems(categories, refreshTime, edition, itemsPerCateg
 
         try {
             const loadedCategories = await Promise.all(
-                todoList.map(category => getNews({ category, edition }).then(data => {
-                    let { category, articles, title } = data;
-                    const key = `${edition}_${category}`;
-
-                    return {
-                        id: category,
-                        key,
-                        name: title,
-                        articles,
-                        loadedAt: now,
-                    };
-                }))
+                todoList.map(category => {
+                    const topic = topics[category];
+                    if (!topic) {
+                        console.error(`No topic config for category: ${category}`);
+                        return Promise.resolve({
+                            id: category,
+                            key: category,
+                            name: category,
+                            articles: [],
+                            loadedAt: now,
+                        });
+                    }
+                    return getNewsByQuery({
+                        query: topic.query,
+                        category,
+                        label: topic.label,
+                    }).then(data => {
+                        let { category, articles, title } = data;
+                        return {
+                            id: category,
+                            key: category,
+                            name: title,
+                            articles,
+                            loadedAt: now,
+                        };
+                    });
+                })
             );
 
             if (!cancellable || cancellable.current) {
@@ -84,7 +100,7 @@ export function useCategoryItems(categories, refreshTime, edition, itemsPerCateg
 
             return () => { cancellable.current = false; };
         }
-    }, [edition, categories]);
+    }, [categories]);
 
     useEffect(() => {
         let cancellable = { current: true };
@@ -105,7 +121,7 @@ export function useCategoryItems(categories, refreshTime, edition, itemsPerCateg
         // Dummy category while it loads
         {
             id: categoryID,
-            key: `${edition}_${categoryID}`,
+            key: categoryID,
             name: ucfirst(categoryID),
             articles: [],
             loadedAt: 0,
