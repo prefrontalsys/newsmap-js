@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 
 // Inject ENV variables
 app.get("/", function (req, res) {
-  var html = fs.readFileSync(__dirname + "/static/index.html", "utf8");
+  var html = fs.readFileSync(__dirname + "/dist/index.html", "utf8");
   var $ = cheerio.load(html);
 
   const env = {
@@ -42,7 +42,7 @@ app.get("/", function (req, res) {
   res.send($.html());
 });
 
-app.use(express.static("static"));
+app.use(express.static("dist"));
 
 app.use(
   "/api",
