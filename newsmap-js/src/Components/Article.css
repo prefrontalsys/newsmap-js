@@ -4,6 +4,7 @@
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.3);
   animation: fade-in 2s ease-in;
+  position: relative;
 }
 
 .Article-li:focus-within {
@@ -61,6 +62,7 @@
   height: auto;
   background: rgba(0, 0, 0, 0.35);
   padding: 2% 2% 0;
+  z-index: 1;
 }
 
 .Article-li.Article--shadow:hover .article::after {
