@@ -1,34 +1,31 @@
 export const originalColours = {
-  "world":          "#9c1f1f",
-  "nation":         "#9c891f",
-  "business":       "#449c1f",
-  "technology":     "#1f9c66",
-  "sports":         "#1f689c",
-  "entertainment":  "#421f9c",
-  "health":         "#9c1f8b",
-  "science":        "#68429c",
+  "ai":             "#e74c3c",
+  "devtools":       "#3498db",
+  "finserv":        "#2ecc71",
+  "science":        "#f39c12",
+  "cogsci":         "#9b59b6",
+  "security":       "#e67e22",
+  "systems":        "#1abc9c",
 };
 
 export const primaryColours = {
-  "world":          "#FF0000",
-  "nation":         "#FFFF00",
-  "business":       "#40FF00",
-  "technology":     "#00BFFF",
-  "sports":         "#FF00FF",
-  "entertainment":  "#0000FF",
-  "health":         "#FF0080",
-  "science":        "#D8D8D8",
+  "ai":             "#FF4444",
+  "devtools":       "#4488FF",
+  "finserv":        "#44FF88",
+  "science":        "#FFCC00",
+  "cogsci":         "#CC66FF",
+  "security":       "#FF8800",
+  "systems":        "#00DDAA",
 };
 
 export const rainbow = {
-  "world":          "#FF0000",
-  "nation":         "#FF8000",
-  "business":       "#FFFF00",
-  "technology":     "#00FF00",
-  "entertainment":  "#00FF80",
-  "sports":         "#0000FF",
-  "science":        "#800080",
-  "health":         "#808080",
+  "ai":             "#FF0000",
+  "devtools":       "#0088FF",
+  "finserv":        "#00FF44",
+  "science":        "#FFFF00",
+  "cogsci":         "#8800FF",
+  "security":       "#FF8800",
+  "systems":        "#00FFAA",
 };
 
 export default originalColours;

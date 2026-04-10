@@ -1,0 +1,37 @@
+{
+  "ai": {
+    "label": "AI & Agents",
+    "color": "#e74c3c",
+    "query": "\"artificial intelligence\" OR LLM OR \"agent framework\" OR Claude OR GPT OR \"AI safety\" OR \"machine learning\""
+  },
+  "devtools": {
+    "label": "Dev Tools & Infrastructure",
+    "color": "#3498db",
+    "query": "\"developer tools\" OR DevOps OR \"open source\" OR Kubernetes OR \"programming language\" OR \"cloud computing\""
+  },
+  "finserv": {
+    "label": "Financial Services",
+    "color": "#2ecc71",
+    "query": "fintech OR \"financial services\" OR banking OR \"capital markets\" OR payments OR \"financial regulation\""
+  },
+  "science": {
+    "label": "Science",
+    "color": "#f39c12",
+    "query": "\"scientific discovery\" OR physics OR biology OR \"climate science\" OR \"space exploration\" OR \"materials science\""
+  },
+  "cogsci": {
+    "label": "Cognitive Science & Psychology",
+    "color": "#9b59b6",
+    "query": "neuroscience OR \"cognitive science\" OR psychology OR \"decision making\" OR \"behavioral economics\" OR consciousness"
+  },
+  "security": {
+    "label": "Cybersecurity",
+    "color": "#e67e22",
+    "query": "cybersecurity OR \"data breach\" OR vulnerability OR \"threat intelligence\" OR \"application security\" OR \"supply chain attack\""
+  },
+  "systems": {
+    "label": "Systems & Complexity",
+    "color": "#1abc9c",
+    "query": "\"systems thinking\" OR cybernetics OR \"complex systems\" OR \"organizational theory\" OR emergence OR \"feedback loops\""
+  }
+}

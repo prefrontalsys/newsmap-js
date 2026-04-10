@@ -1,10 +1,9 @@
 [
-  "world",
-  "nation",
-  "business",
-  "technology",
-  "entertainment",
-  "sports",
+  "ai",
+  "devtools",
+  "finserv",
   "science",
-  "health"
+  "cogsci",
+  "security",
+  "systems"
 ]
