@@ -71,7 +71,7 @@ class App extends Component {
       showOptions: false,
       showSearchOptions: false,
       headerTop: false,
-      itemsPerCategory: 10,
+      itemsPerCategory: 20,
       newTab: true,
       enableSourcesModal: false,
       wakeLock: false,
