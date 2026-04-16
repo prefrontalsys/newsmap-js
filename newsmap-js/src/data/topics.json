@@ -2,36 +2,50 @@
   "ai": {
     "label": "AI & Agents",
     "color": "#e74c3c",
-    "query": "\"artificial intelligence\" OR LLM OR \"agent framework\" OR Claude OR GPT OR \"AI safety\" OR \"machine learning\""
+    "query": "\"artificial intelligence\" OR LLM OR \"agent framework\" OR Claude OR GPT OR \"AI safety\" OR \"machine learning\"",
+    "arxiv": "cat:cs.AI OR cat:cs.LG OR cat:cs.CL",
+    "s2": "large language models, AI agents, AI alignment, reinforcement learning"
   },
   "devtools": {
     "label": "Dev Tools & Infrastructure",
     "color": "#3498db",
-    "query": "\"developer tools\" OR DevOps OR \"open source\" OR Kubernetes OR \"programming language\" OR \"cloud computing\""
+    "query": "\"developer tools\" OR DevOps OR \"open source\" OR Kubernetes OR \"programming language\" OR \"cloud computing\"",
+    "arxiv": "cat:cs.SE OR cat:cs.PL OR cat:cs.DC",
+    "s2": "software engineering, developer productivity, cloud infrastructure, programming languages"
   },
   "finserv": {
     "label": "Financial Services",
     "color": "#2ecc71",
-    "query": "fintech OR \"financial services\" OR banking OR \"capital markets\" OR payments OR \"financial regulation\""
+    "query": "fintech OR \"financial services\" OR banking OR \"capital markets\" OR payments OR \"financial regulation\"",
+    "arxiv": "cat:q-fin.GN OR cat:q-fin.TR OR cat:econ.GN",
+    "s2": "financial technology, digital banking, payments systems, capital markets"
   },
   "science": {
     "label": "Science",
     "color": "#f39c12",
-    "query": "\"scientific discovery\" OR physics OR biology OR \"climate science\" OR \"space exploration\" OR \"materials science\""
+    "query": "\"scientific discovery\" OR physics OR biology OR \"climate science\" OR \"space exploration\" OR \"materials science\"",
+    "arxiv": "cat:physics.gen-ph OR cat:q-bio OR cat:astro-ph OR cat:cond-mat.mtrl-sci",
+    "s2": "scientific discovery, climate science, materials science, space exploration"
   },
   "cogsci": {
     "label": "Cognitive Science & Psychology",
     "color": "#9b59b6",
-    "query": "neuroscience OR \"cognitive science\" OR psychology OR \"decision making\" OR \"behavioral economics\" OR consciousness"
+    "query": "neuroscience OR \"cognitive science\" OR psychology OR \"decision making\" OR \"behavioral economics\" OR consciousness",
+    "arxiv": "cat:q-bio.NC OR cat:cs.NE",
+    "s2": "cognitive neuroscience, decision making, behavioral economics, consciousness"
   },
   "security": {
     "label": "Cybersecurity",
     "color": "#e67e22",
-    "query": "cybersecurity OR \"data breach\" OR vulnerability OR \"threat intelligence\" OR \"application security\" OR \"supply chain attack\""
+    "query": "cybersecurity OR \"data breach\" OR vulnerability OR \"threat intelligence\" OR \"application security\" OR \"supply chain attack\"",
+    "arxiv": "cat:cs.CR",
+    "s2": "cybersecurity, vulnerability research, threat intelligence, supply chain security"
   },
   "systems": {
     "label": "Systems & Complexity",
     "color": "#1abc9c",
-    "query": "\"systems thinking\" OR cybernetics OR \"complex systems\" OR \"organizational theory\" OR emergence OR \"feedback loops\""
+    "query": "\"systems thinking\" OR cybernetics OR \"complex systems\" OR \"organizational theory\" OR emergence OR \"feedback loops\"",
+    "arxiv": "cat:nlin.AO OR cat:cs.MA",
+    "s2": "complex systems, cybernetics, emergence, multi-agent systems"
   }
 }
